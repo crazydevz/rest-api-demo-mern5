@@ -17,9 +17,9 @@ app.get('/', (req, res, next) => {
 	res.send('Hello from server');
 });
 
-// app.all('*', (req, res) => {
-// 	res.status(404).send(`No route found against ${req.originalUrl}`);
-// });
+app.all('*', (req, res) => {
+	res.status(404).send(`No route found against ${req.originalUrl}`);
+});
 
 app.listen(PORT, () => {
 	console.log(`Server listening at port ${PORT}`);
