@@ -13,9 +13,9 @@ app.use(cors());
 app.use('/api/v1/products', require('./routes/product'));
 app.use('/api/v1/users', require('./routes/user'));
 
-app.get('/', (req, res, next) => {
-	res.send('Hello from server');
-});
+// app.get('/', (req, res, next) => {
+// 	res.send('Hello from server');
+// });
 
 app.all('*', (req, res) => {
 	res.status(404).send(`No route found against ${req.originalUrl}`);
