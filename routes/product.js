@@ -6,10 +6,13 @@ const {
 	validateBody,
 	validateQueryParams,
 } = require('../middleware/schemaValidation');
+const { validateToken, restrictTo } = require('../middleware/auth');
 
 router
 	.route('/')
 	.get(
+		validateToken,
+		// restrictTo('user', 'admin'),
 		validateQueryParams(productSchema.getAllProductsSchema),
 		productController.getAllProducts
 	)
