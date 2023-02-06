@@ -3,6 +3,7 @@ const cors = require('cors');
 
 require('dotenv').config();
 require('./database/connect')();
+const errorHandler = require('./middleware/errorHandler');
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -12,6 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use('/api/v1/products', require('./routes/product'));
 app.use('/api/v1/users', require('./routes/user'));
+app.use(errorHandler);
 
 // app.get('/', (req, res, next) => {
 // 	res.send('Hello from server');
